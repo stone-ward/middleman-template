@@ -1,0 +1,26 @@
+activate :directory_indexes
+
+set :css_dir, 'assets/stylesheets'
+set :js_dir, 'assets/javascripts'
+set :images_dir, 'assets/images'
+
+page '/*.xml', layout: false
+page '/*.json', layout: false
+page '/*.txt', layout: false
+
+activate :external_pipeline,
+  name: :webpack,
+  command: build? ? 'npm run build' : 'npm run watch',
+  source: ".tmp/dist",
+  latency: 1
+
+configure :development do
+  activate :livereload do |reload|
+    reload.no_swf = true
+  end
+end
+
+configure :production do
+  activate :minify_html
+  activate :asset_hash, ignore: [/\.jpg\Z/, /\.png\Z/, /\.svg\Z/]
+end

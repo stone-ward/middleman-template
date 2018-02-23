@@ -1,0 +1,5 @@
+[build]
+  command = "bundle exec middleman build"
+  publish = "build/"
+[template.environment]
+  DATO_API_TOKEN = "change me to your DatoCMS API key"
