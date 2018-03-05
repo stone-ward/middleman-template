@@ -3,10 +3,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: ['./assets/javascripts/site.js', './assets/stylesheets/site.scss'],
+  entry: ['./assets/js/site.js', './assets/css/site.scss'],
   output: {
     path: path.resolve(__dirname, '.tmp/dist/assets'),
-    filename: 'javascripts/site.js'
+    filename: 'js/site.js'
   },
   module: {
     rules: [
@@ -23,13 +23,22 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              options: { url: false }
+              options: {
+                url: false,
+                sourceMap: true
+              }
             },
             {
               loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              }
             },
             {
-              loader: 'sass-loader'
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
             }
           ]
         })
@@ -38,7 +47,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'stylesheets/site.css',
+      filename: 'css/site.css',
       allChunks: true
     }),
     new CopyWebpackPlugin([{
