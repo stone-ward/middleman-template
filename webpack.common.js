@@ -24,21 +24,14 @@ module.exports = {
             {
               loader: 'css-loader',
               options: {
-                url: false,
-                sourceMap: true
+                url: false
               }
             },
             {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true
-              }
+              loader: 'postcss-loader'
             },
             {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
+              loader: 'sass-loader'
             }
           ]
         })
