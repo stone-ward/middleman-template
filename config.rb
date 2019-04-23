@@ -22,5 +22,4 @@ end
 
 configure :production do
   activate :minify_html
-  activate :asset_hash, ignore: [/\.jpg\Z/, /\.png\Z/, /\.svg\Z/]
 end
